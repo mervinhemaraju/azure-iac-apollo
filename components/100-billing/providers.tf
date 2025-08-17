@@ -1,0 +1,3 @@
+# Azure Provider
+provider "azurerm" {
+}
