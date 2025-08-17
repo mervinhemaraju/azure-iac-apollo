@@ -14,3 +14,8 @@ variable "bucket_region" {
   type        = string
   description = "The region of the bucket."
 }
+
+variable "token_doppler_global" {
+  type        = string
+  description = "The token for secrets manager Doppler main project."
+}
