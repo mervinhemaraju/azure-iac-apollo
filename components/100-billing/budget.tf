@@ -6,7 +6,7 @@ resource "azurerm_consumption_budget_subscription" "strict" {
   time_grain = "Monthly"
 
   time_period {
-    start_date = "2024-01-01T00:00:00Z"
+    start_date = "2025-08-01T00:00:00Z"
     end_date   = "2090-01-01T00:00:00Z"
   }
 
