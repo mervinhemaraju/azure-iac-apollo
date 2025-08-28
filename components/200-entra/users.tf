@@ -8,6 +8,6 @@ resource "azuread_user" "mervin16" {
 }
 
 resource "azuread_directory_role_assignment" "mervin16_global_admin" {
-  role_id             = data.azuread_directory_role.global_administrator.template_id
+  role_id             = azuread_directory_role.global_administrator.template_id
   principal_object_id = azuread_user.mervin16.object_id
 }
