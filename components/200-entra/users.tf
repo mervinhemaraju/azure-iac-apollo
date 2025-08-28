@@ -1,4 +1,4 @@
-# User mervin16 and its role assignment
+# Create my administrator user
 resource "azuread_user" "mervin16" {
   user_principal_name = "mervin16@${local.domain.plagueworks_org}"
   display_name        = "Mervin Hemaraju"
@@ -7,7 +7,8 @@ resource "azuread_user" "mervin16" {
   account_enabled     = true
 }
 
-resource "azuread_directory_role_assignment" "mervin16_global_admin" {
-  role_id             = azuread_directory_role.global_administrator.template_id
-  principal_object_id = azuread_user.mervin16.object_id
+# Add mervin16 to the Administrators group
+resource "azuread_group_member" "mervin16_admin_member" {
+  group_object_id  = azuread_group.administrators.object_id
+  member_object_id = azuread_user.mervin16.object_id
 }
