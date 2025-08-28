@@ -1,4 +1,4 @@
-# Create my administrator user
+# User mervin16 and its role assignment
 resource "azuread_user" "mervin16" {
   user_principal_name = "mervin16@${local.domain.plagueworks_org}"
   display_name        = "Mervin Hemaraju"
@@ -7,8 +7,19 @@ resource "azuread_user" "mervin16" {
   account_enabled     = true
 }
 
-# Add mervin16 to the Administrators group
-resource "azuread_group_member" "mervin16_admin_member" {
-  group_object_id  = azuread_group.administrators.object_id
-  member_object_id = azuread_user.mervin16.object_id
+resource "azuread_directory_role_assignment" "mervin16_global_admin" {
+  role_id             = azuread_directory_role.global_administrator.template_id
+  principal_object_id = azuread_user.mervin16.object_id
+}
+
+# Enable authentication methods for the user
+resource "azuread_authentication_strength_policy" "require_mfa" {
+  display_name = "Require MFA for Admin Users"
+  description  = "Requires MFA for administrative users"
+
+  allowed_combinations = [
+    "password,microsoftAuthenticator",
+    "password,sms",
+    "password,softwareOath",
+  ]
 }
