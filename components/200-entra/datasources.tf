@@ -3,12 +3,12 @@ data "azuread_client_config" "current" {}
 
 # Doppler secrets for azure
 data "doppler_secrets" "azure_creds" {
-  project = "cloud-azure-creds"
+  project = local.secrets.azure
 }
 
 # Doppler secrets for cloudflare
 data "doppler_secrets" "cloudflare_creds" {
-  project = "cloudflare-creds"
+  project = local.secrets.cloudflare
 }
 
 # Get azure ad root domains

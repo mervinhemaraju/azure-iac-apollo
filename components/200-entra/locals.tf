@@ -4,6 +4,11 @@ locals {
     plagueworks_org = [for domain in data.azuread_domains.root.domains : domain if domain.domain_name == "plagueworks.org"][0]["domain_name"]
   }
 
+  secrets = {
+    cloudflare = "cloudflare-creds"
+    azure      = "cloud-azure-creds"
+  }
+
   graph_permissions = {
     directory_read_all = "7ab1d382-f21e-4acd-a863-ba3e13f7da61"
     email              = "64a6cdd6-aab1-4aaf-94b8-3cc8405e90d0"
