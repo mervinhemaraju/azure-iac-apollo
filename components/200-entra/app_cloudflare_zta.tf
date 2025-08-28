@@ -38,7 +38,7 @@ resource "azuread_application" "cloudflare_zta" {
   }
 
   required_resource_access {
-    resource_app_id = data.azuread_service_principal.microsoft_graph.object_id
+    resource_app_id = data.azuread_service_principal.microsoft_graph.client_id
 
     # Directory.Read.All - Read directory data
     resource_access {
