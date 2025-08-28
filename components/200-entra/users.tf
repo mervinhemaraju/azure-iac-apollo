@@ -3,7 +3,7 @@ resource "azuread_user" "mervin16" {
   user_principal_name = "mervin16@${local.domain.plagueworks_org}"
   display_name        = "Mervin Hemaraju"
   mail_nickname       = "mervin16"
-  password            = data.doppler_secrets.azure_crds.map.AZURE_APOLLO_AD_ADMIN_PASSWORD
+  password            = data.doppler_secrets.azure_creds.map.AZURE_APOLLO_AD_ADMIN_PASSWORD
   account_enabled     = true
 }
 

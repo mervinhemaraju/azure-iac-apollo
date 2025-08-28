@@ -3,10 +3,10 @@ resource "time_rotating" "cloudflare_zta" {
   rotation_days = 180
 }
 
+# The cloudflare application
 resource "azuread_application" "cloudflare_zta" {
   display_name = "cloudflare-zta"
   #   logo_image       = filebase64("/path/to/logo.png")
-  #   identifier_uris  = ["https://plagueworks.cloudflareaccess.com"]
   sign_in_audience = "AzureADMyOrg"
 
   feature_tags {
@@ -86,7 +86,7 @@ resource "azuread_application" "cloudflare_zta" {
   web {
     # homepage_url  = "https://app.example.net"
     # logout_url    = "https://app.example.net/logout"
-    redirect_uris = ["https://plagueworks.cloudflareaccess.com/cdn-cgi/access/callback"]
+    redirect_uris = ["https://${data.doppler_secrets.cloudflare_creds.map.ZTA_DOMAIN_NAME}/cdn-cgi/access/callback"]
 
     implicit_grant {
       access_token_issuance_enabled = false
@@ -101,6 +101,7 @@ resource "azuread_application" "cloudflare_zta" {
   }
 }
 
+# The service principal
 resource "azuread_service_principal" "cloudflare_zta" {
   client_id = azuread_application.cloudflare_zta.client_id
 }
