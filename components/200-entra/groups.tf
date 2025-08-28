@@ -4,6 +4,7 @@ resource "azuread_group" "administrators" {
   description             = "Global Administrators group with MFA enforcement"
   security_enabled        = true
   prevent_duplicate_names = true
+  assignable_to_role      = true
 }
 
 # Assign Global Administrator role to the group
