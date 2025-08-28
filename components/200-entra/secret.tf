@@ -8,7 +8,7 @@ resource "doppler_secret" "cloudflare_zta_config" {
   value = jsonencode(
     {
       "application_id" : azuread_application.cloudflare_zta.client_id
-      "secret" : tolist(azuread_application.cloudflare_zta.password).0.value
+      "application_secret" : tolist(azuread_application.cloudflare_zta.password).0.value
     }
   )
 }
