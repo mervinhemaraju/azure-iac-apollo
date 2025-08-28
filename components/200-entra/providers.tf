@@ -1,10 +1,5 @@
 # Azure AD Provider
-provider "azuread" {
-}
-
-data "azuread_domains" "default" {
-  only_default = true
-}
+provider "azuread" {}
 
 # Doppler Provider for Secrets Manager
 provider "doppler" {
