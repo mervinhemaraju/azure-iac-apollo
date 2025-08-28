@@ -10,3 +10,8 @@ data "doppler_secrets" "azure_crds" {
 data "azuread_domains" "root" {
   only_root = true
 }
+
+# Azure service principal for microsoft graph
+data "azuread_service_principal" "microsoft_graph" {
+  display_name = "Microsoft Graph"
+}
