@@ -10,3 +10,8 @@ data "doppler_secrets" "azure_crds" {
 data "azuread_domains" "root" {
   only_root = true
 }
+
+# Get the Global Administrator role
+data "azuread_directory_role" "global_administrator" {
+  display_name = "Global Administrator"
+}
