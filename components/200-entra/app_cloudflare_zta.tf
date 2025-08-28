@@ -53,10 +53,10 @@ resource "azuread_application" "cloudflare_zta" {
     }
 
     # GroupMember.Read.All - Read group memberships
-    resource_access {
-      id   = local.graph_permissions.group_member_read_all
-      type = "Role"
-    }
+    # resource_access {
+    #   id   = local.graph_permissions.group_member_read_all
+    #   type = "Role"
+    # }
 
     # offline_access - Maintain access to data you have given it access to
     resource_access {
@@ -113,8 +113,8 @@ resource "azuread_app_role_assignment" "directory_read_all" {
   resource_object_id  = data.azuread_service_principal.microsoft_graph.object_id
 }
 
-resource "azuread_app_role_assignment" "group_read_all" {
-  app_role_id         = local.graph_permissions.group_member_read_all
-  principal_object_id = azuread_service_principal.cloudflare_zta.object_id
-  resource_object_id  = data.azuread_service_principal.microsoft_graph.object_id
-}
+# resource "azuread_app_role_assignment" "group_read_all" {
+#   app_role_id         = local.graph_permissions.group_member_read_all
+#   principal_object_id = azuread_service_principal.cloudflare_zta.object_id
+#   resource_object_id  = data.azuread_service_principal.microsoft_graph.object_id
+# }
