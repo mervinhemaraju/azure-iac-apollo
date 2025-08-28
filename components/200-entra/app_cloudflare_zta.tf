@@ -6,7 +6,7 @@ resource "time_rotating" "cloudflare_zta" {
 resource "azuread_application" "cloudflare_zta" {
   display_name = "cloudflare-zta"
   #   logo_image       = filebase64("/path/to/logo.png")
-  identifier_uris  = ["https://plagueworks.cloudflareaccess.com"]
+  #   identifier_uris  = ["https://plagueworks.cloudflareaccess.com"]
   sign_in_audience = "AzureADMyOrg"
 
   feature_tags {
