@@ -18,8 +18,11 @@ resource "azuread_authentication_strength_policy" "require_mfa" {
   description  = "Requires MFA for administrative users"
 
   allowed_combinations = [
-    "password,microsoftAuthenticator",
+    # "password",
+    "password,hardwareOath",
+    "password,microsoftAuthenticatorPush",
     "password,sms",
     "password,softwareOath",
+    "password,voice",
   ]
 }
