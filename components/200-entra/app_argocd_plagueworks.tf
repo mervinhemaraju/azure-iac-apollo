@@ -83,7 +83,7 @@ resource "azuread_application" "argocd_plagueworks" {
   }
 
   web {
-    redirect_uris = ["https://argocd.plagueworks.org/auth/callback"]
+    redirect_uris = ["https://argocd.plagueworks.org/api/dex/callback"]
 
     implicit_grant {
       access_token_issuance_enabled = false
