@@ -104,7 +104,7 @@ resource "azuread_service_principal" "argocd_plagueworks" {
 }
 
 # Grant admin consent for application permissions
-resource "azuread_app_role_assignment" "directory_read_all" {
+resource "azuread_app_role_assignment" "argocd_plagueworks_directory_read_all" {
   app_role_id         = local.graph_permissions.directory_read_all
   principal_object_id = azuread_service_principal.argocd_plagueworks.object_id
   resource_object_id  = data.azuread_service_principal.microsoft_graph.object_id
