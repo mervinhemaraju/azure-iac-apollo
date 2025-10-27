@@ -12,3 +12,18 @@ resource "doppler_secret" "cloudflare_zta_config" {
     }
   )
 }
+
+
+# Store argocd-plagueworks the secret information in Doppler secrets
+resource "doppler_secret" "argocd_plagueworks_config" {
+  project    = local.secrets.azure
+  config     = "prd"
+  name       = "AZURE_APOLLO_APPS_ARGOCD_PLAGUEWORKS_CONFIG"
+  value_type = "json"
+  value = jsonencode(
+    {
+      "application_id" : azuread_application.argocd_plagueworks.client_id
+      "application_secret" : tolist(azuread_application.argocd_plagueworks.password).0.value
+    }
+  )
+}
